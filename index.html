@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyOKR - Empower Your Goals</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">MyOKR</h1>
+      <!-- Change this line in your header navigation -->
+<nav class="nav">
+  <a href="#features">Features</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <!-- Update this line: -->
+  <a href="login.html" class="btn">Login</a>
+</nav>
+    </div>
+  </header>
+
+  <section class="carousel">
+    <div class="slide slide-1">
+      <div class="hero-content">
+        <h2>Set Ambitious Goals</h2>
+        <p>Define clear objectives that push your teams forward with focus and clarity.</p>
+        <a href="signup.html" class="cta">Start Now</a>
+      </div>
+    </div>
+    <div class="slide slide-2">
+      <div class="hero-content">
+        <h2>Track Results in Real Time</h2>
+        <p>Visual dashboards and OKR timelines help your team stay aligned and informed.</p>
+        <a href="signup.html" class="cta">Join Free</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">Why MyOKR?</h2>
+      <div class="feature-list">
+        <div class="feature">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="OKR">
+          <h3>Simple OKR Setup</h3>
+          <p>Set Objectives and Key Results effortlessly with guided templates.</p>
+        </div>
+        <div class="feature">
+          <img src="https://cdn-icons-png.flaticon.com/512/1183/1183672.png" alt="Progress">
+          <h3>Real-Time Progress</h3>
+          <p>Visual dashboards help you stay on top of team progress and updates.</p>
+        </div>
+        <div class="feature">
+          <img src="https://cdn-icons-png.flaticon.com/512/1008/1008828.png" alt="Team">
+          <h3>Organized Teams</h3>
+          <p>Structure your organization with departments, teams, and roles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">About MyOKR</h2>
+      <p>MyOKR is a modern web-based platform to empower organizations with strategic goal-setting and agile tracking tools. Designed to drive alignment, focus, and measurable results.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 MyOKR. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let index = 0;
+
+    function showSlide(i) {
+      slides.forEach(slide => slide.style.display = 'none');
+      slides[i].style.display = 'flex';
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }
+
+    showSlide(index);
+    setInterval(nextSlide, 5000);
+  </script>
+</body>
+
+</html>
