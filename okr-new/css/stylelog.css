@@ -1,0 +1,49 @@
+body.login-body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;  /* Changed from height to min-height */
+  margin: 0;
+  padding: 20px;  /* Added padding for mobile responsiveness */
+  box-sizing: border-box;  /* Ensures padding is included in height */
+}
+
+.login-container {
+  background: #fff;
+  padding: 40px;  /* Reduced from 60px for better proportions */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 100%;  /* Changed from fixed width */
+  max-width: 350px;  /* Maximum width */
+  margin: 20px;  /* Added margin for smaller screens */
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: #222;
+  text-align: center;  /* Ensure heading is centered */
+}
+
+.login-container input,
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;  /* Include padding in width calculation */
+}
+
+.login-container button {
+  background-color: #0072ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;  /* Added smooth transition */
+}
+
+.login-container button:hover {
+  background-color: #0056b3;  /* Darker shade on hover */
+}
