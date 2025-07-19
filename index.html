@@ -1,111 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyOKR - Empower Your Goals</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>GoalTracker - Modern Goal Management</title>
+  <style>
+    :root {
+      --primary: #6c5ce7;
+      --secondary: #a29bfe;
+      --dark: #2d3436;
+      --light: #f5f6fa;
+      --success: #00b894;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Header */
+    header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .logo span {
+      color: var(--dark);
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: var(--primary);
+    }
+    
+    .btn {
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn:hover {
+      background: #5649d6;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #f5f6fa, #dfe6e9);
+      padding-top: 80px;
+    }
+    
+    .hero-content {
+      max-width: 600px;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #636e72;
+    }
+    
+    .hero-btns {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .secondary-btn {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .hero-image {
+      position: absolute;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+      clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 100px 0;
+      background: white;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--dark);
+    }
+    
+    .section-title p {
+      color: #636e72;
+      max-width: 600px;
+      margin: 15px auto 0;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .feature-icon i {
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+    
+    /* Animation Classes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        text-align: center;
+        padding-top: 100px;
+        height: auto;
+        padding-bottom: 80px;
+      }
+      
+      .hero-content {
+        max-width: 100%;
+      }
+      
+      .hero-btns {
+        justify-content: center;
+      }
+      
+      .hero-image {
+        display: none;
+      }
+      
+      nav ul {
+        display: none;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-
 <body>
-  <header class="header">
+  <header>
     <div class="container">
-      <h1 class="logo">MyOKR</h1>
-      <!-- Change this line in your header navigation -->
-<nav class="nav">
-  <a href="#features">Features</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <!-- Update this line: -->
-  <a href="login.html" class="btn">Login</a>
-</nav>
+      <div class="header-content">
+        <div class="logo">Goal<span>Tracker</span></div>
+        <nav>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="login.html" class="btn">Login</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
 
-  <section class="carousel">
-    <div class="slide slide-1">
+  <section class="hero">
+    <div class="container">
       <div class="hero-content">
-        <h2>Set Ambitious Goals</h2>
-        <p>Define clear objectives that push your teams forward with focus and clarity.</p>
-        <a href="signup.html" class="cta">Start Now</a>
+        <h1>Modern Goal Tracking For High-Performance Teams</h1>
+        <p>Align your team's objectives with measurable results using our intuitive goal tracking platform designed for clarity and focus.</p>
+        <div class="hero-btns">
+          <a href="signup.html" class="btn">Get Started</a>
+          <a href="#features" class="btn secondary-btn">Learn More</a>
+        </div>
       </div>
-    </div>
-    <div class="slide slide-2">
-      <div class="hero-content">
-        <h2>Track Results in Real Time</h2>
-        <p>Visual dashboards and OKR timelines help your team stay aligned and informed.</p>
-        <a href="signup.html" class="cta">Join Free</a>
-      </div>
+      <div class="hero-image"></div>
     </div>
   </section>
 
   <section class="features" id="features">
     <div class="container">
-      <h2 class="section-title">Why MyOKR?</h2>
-      <div class="feature-list">
-        <div class="feature">
-          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="OKR">
-          <h3>Simple OKR Setup</h3>
-          <p>Set Objectives and Key Results effortlessly with guided templates.</p>
+      <div class="section-title">
+        <h2>Powerful Features</h2>
+        <p>Everything you need to set, track, and achieve your most important goals</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card animate" style="animation-delay: 0.1s">
+          <div class="feature-icon">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3>Objective Tracking</h3>
+          <p>Define clear objectives with measurable key results that keep your team focused on what matters most.</p>
         </div>
-        <div class="feature">
-          <img src="https://cdn-icons-png.flaticon.com/512/1183/1183672.png" alt="Progress">
-          <h3>Real-Time Progress</h3>
-          <p>Visual dashboards help you stay on top of team progress and updates.</p>
+        
+        <div class="feature-card animate" style="animation-delay: 0.2s">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Progress Visualization</h3>
+          <p>Beautiful dashboards that show real-time progress toward your goals with intuitive visualizations.</p>
         </div>
-        <div class="feature">
-          <img src="https://cdn-icons-png.flaticon.com/512/1008/1008828.png" alt="Team">
-          <h3>Organized Teams</h3>
-          <p>Structure your organization with departments, teams, and roles.</p>
+        
+        <div class="feature-card animate" style="animation-delay: 0.3s">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Team Alignment</h3>
+          <p>Connect individual contributions to team objectives to maintain perfect organizational alignment.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="about" id="about">
-    <div class="container">
-      <h2 class="section-title">About MyOKR</h2>
-      <p>MyOKR is a modern web-based platform to empower organizations with strategic goal-setting and agile tracking tools. Designed to drive alignment, focus, and measurable results.</p>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact Us</h2>
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 MyOKR. All rights reserved.</p>
-    </div>
-  </footer>
-
   <script>
-    const slides = document.querySelectorAll('.slide');
-    let index = 0;
-
-    function showSlide(i) {
-      slides.forEach(slide => slide.style.display = 'none');
-      slides[i].style.display = 'flex';
-    }
-
-    function nextSlide() {
-      index = (index + 1) % slides.length;
-      showSlide(index);
-    }
-
-    showSlide(index);
-    setInterval(nextSlide, 5000);
+    // Simple animation trigger
+    document.addEventListener('DOMContentLoaded', function() {
+      const animateElements = document.querySelectorAll('.animate');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      animateElements.forEach(el => observer.observe(el));
+    });
   </script>
 </body>
-
 </html>
